@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload coffee-theme">
     <div id="wrapper">
@@ -23,7 +22,6 @@
                 <div class="inner">
                     <ul id="main-menu">
                         <li><a href="index.html">TRANG CHỦ</a></li>
-                        <li><a href="generic.html">GIỚI THIỆU</a></li>
                         <li><a href="#coffee-menu">THỰC ĐƠN</a></li>
                         <li><a href="#footer">LIÊN HỆ</a></li>
                     </ul>
@@ -33,32 +31,16 @@
 
         <section class="banner-wrapper">
             <div class="banner-container">
-                <img src="images/banner276.gif" alt="Cà phê 276 Phú Thiện" class="full-banner">
+                <img src="images/banner276.gif" alt="Banner Cà phê 276" class="full-banner">
             </div>
         </section>
 
         <section class="trust-container">
             <div class="inner">
-                <div class="trust-item">
-                    <i class="fa fa-coffee"></i>
-                    <h4>Rang xay sạch</h4>
-                    <p>Cà phê nguyên chất, đậm đà hương vị địa phương.</p>
-                </div>
-                <div class="trust-item">
-                    <i class="fa fa-map-marker"></i>
-                    <h4>Địa chỉ tin cậy</h4>
-                    <p>276 Hùng Vương,xã Phú Thiện,tỉnh Gia Lai.</p>
-                </div>
-                <div class="trust-item">
-                    <i class="fa fa-wifi"></i>
-                    <h4>Wifi tốc độ cao</h4>
-                    <p>Không gian lý tưởng cho học tập và làm việc.</p>
-                </div>
-                <div class="trust-item">
-                    <i class="fa fa-shield"></i>
-                    <h4>Phục vụ tận tâm</h4>
-                    <p>Chất lượng hàng đầu từ cà phê 276 Phú Thiện.</p>
-                </div>
+                <div class="trust-item"><i class="fa fa-coffee"></i><h4>Rang xay sạch</h4><p>Cà phê máy & phin nguyên chất [cite: 2026-02-03].</p></div>
+                <div class="trust-item"><i class="fa fa-map-marker"></i><h4>Phú Thiện</h4><p>276 Hùng Vương, Gia Lai.</p></div>
+                <div class="trust-item"><i class="fa fa-wifi"></i><h4>Wifi Mạnh</h4><p>Lý tưởng để làm việc IT.</p></div>
+                <div class="trust-item"><i class="fa fa-heart"></i><h4>Tận tâm</h4><p>Phục vụ bởi Đồng Vĩnh Tín.</p></div>
             </div>
         </section>
 
@@ -66,11 +48,11 @@
             <div class="inner">
                 <header class="section-title">
                     <h2 class="title-coffee">THỰC ĐƠN HÔM NAY</h2>
-                    <p>Khám phá các món nước tại Cà phê 276</p>
                 </header>
-
-                <div id="product-container" class="product-grid">
-                    <p style="text-align: center; width: 100%;">Đang tải thực đơn...</p>
+                <div class="marquee-container">
+                    <div class="marquee-content" id="product-container">
+                        <p>Đang pha chế thực đơn...</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -79,15 +61,13 @@
             <div class="inner">
                 <div class="footer-grid">
                     <section>
-                        <h3>CÀ PHÊ 276 PHÚ THIỆN</h3>
+                        <h3>CÀ PHÊ 276</h3>
                         <p>Địa chỉ: 276 Hùng Vương, xã Phú Thiện, tỉnh Gia Lai.</p>
-                        <p><strong>Hotline:</strong> 0383 065 259</p>
                     </section>
                     <section>
-                        <h3>KẾT NỐI VỚI TÍN</h3>
+                        <h3>LIÊN HỆ</h3>
                         <ul class="social-links">
-                            <li><a href="https://zalo.me/0383065259">Chat Zalo</a></li>
-                            <li><a href="#">Facebook Fanpage</a></li>
+                            <li><a href="https://zalo.me/0383065259">Zalo: 0383 065 259</a></li>
                         </ul>
                     </section>
                 </div>
@@ -99,25 +79,17 @@
     <div id="order-modal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            
-            <h2 class="neon-text" style="color: #6f4e37;">THÔNG TIN ĐƠN HÀNG</h2>
+            <h2 style="color: #6f4e37;">THÔNG TIN MUA HÀNG</h2>
             <div id="selected-product-info"></div>
-            
-            <div class="shop-info-box" style="text-align: left; background: #fff8f0; padding: 15px; border-radius: 10px; border-left: 5px solid #6f4e37; margin: 15px 0;">
-                <p><strong>Địa chỉ mua hàng:</strong> 276 Hùng Vương, Phú Thiện, Gia Lai</p>
-                <p><strong>Chủ quán:</strong> Đồng Vĩnh Tín</p>
+            <div class="shop-box">
+                <p><strong>Địa chỉ:</strong> 276 Hùng Vương, Phú Thiện</p>
             </div>
-            
-            <div class="qr-frame">
-                <img src="images/qrbank.jpg" alt="Mã QR Thanh toán" style="width: 200px; display: block; margin: 0 auto;">
-            </div>
-            
-            <button class="button small close-modal" style="width: 100%; background: #6f4e37 !important; margin-top: 15px;">QUAY LẠI THỰC ĐƠN</button>
+            <div class="qr-frame"><img src="images/qrbank.jpg" alt="QR"></div>
+            <button class="button close-modal" style="width: 100%; background: #6f4e37 !important;">QUAY LẠI</button>
         </div>
     </div>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
-
 </html>
