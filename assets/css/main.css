@@ -48,11 +48,24 @@ body { font-family: 'Inter', sans-serif !important; background: #fdfcf0; color: 
     display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
     background: rgba(0,0,0,0.85); z-index: 10000; backdrop-filter: blur(5px); 
 }
-.modal-content { 
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-    background: #fff; padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; text-align: center; 
+.modal-content {
+    max-width: 400px;
+    width: 90%;
+    max-height: 90vh; /* Không cho vượt quá 90% chiều cao màn hình [cite: 2026-02-03] */
+    overflow-y: auto; /* Hiện thanh cuộn nếu nội dung quá dài */
+    padding: 25px;
+    border-radius: 15px;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
 }
-.close-modal { position: absolute; top: 5px; right: 15px; font-size: 45px; color: #6f4e37; cursor: pointer; }
+
+/* Ép ảnh QR luôn nằm trong khung [cite: 2026-02-03] */
+.qr-frame img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #eee;
+}
 
 /* MOBILE */
 @media screen and (max-width: 768px) {
