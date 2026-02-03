@@ -9,55 +9,79 @@
 </head>
 <body class="is-preload coffee-theme">
     <div id="wrapper">
-        <div id="cart-floating-btn"><i class="fa fa-shopping-cart"></i><span id="cart-count">0</span></div>
+        <div id="cart-floating-btn">
+            <i class="fa fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+        </div>
 
         <header id="header">
-    <div class="top-bar">
-        <div class="inner">
-            <div class="contact-info">Hotline: 0383 065 259</div>
-            <div id="mobile-menu-btn" class="mobile-only"><i class="fa fa-bars"></i> MENU</div>
-        </div>
-    </div>
-    <nav id="horizontal-nav">
-        <ul class="nav-links">
-            <li><a href="index.html">TRANG CHỦ</a></li>
-            <li><a href="#coffee-menu">THỰC ĐƠN</a></li>
-            <li><a href="#footer">LIÊN HỆ</a></li>
-        </ul>
-    </nav>
-</header>
+            <div class="top-bar">
+                <div class="inner">
+                    <div class="contact-info">Hotline: 0383 065 259</div>
+                    <div id="mobile-menu-btn" class="mobile-only"><i class="fa fa-bars"></i> MENU</div>
+                </div>
+            </div>
+            <nav id="horizontal-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">TRANG CHỦ</a></li>
+                    <li><a href="#coffee-menu">THỰC ĐƠN</a></li>
+                    <li><a href="#footer">LIÊN HỆ</a></li>
+                </ul>
+            </nav>
+        </header>
 
-<section class="banner-wrapper">
-    <img src="images/banner276.gif" alt="Cà phê 276 Phú Thiện" class="full-banner">
-</section>
+        <section class="banner-wrapper">
+            <img src="images/banner276.gif" alt="Cà phê 276 Phú Thiện" class="full-banner">
+        </section>
 
-<div id="order-modal" class="modal-overlay">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2 style="color: #6f4e37; margin-bottom: 15px;">GIỎ HÀNG CỦA BẠN</h2>
-        
-        <div id="cart-items-list" style="max-height: 200px; overflow-y: auto; text-align: left;"></div>
+        <section id="coffee-menu" class="marquee-section">
+            <div class="inner">
+                <h2 class="title-coffee" style="text-align: center; margin-top: 30px;">THỰC ĐƠN HÔM NAY</h2>
+                <div class="marquee-container">
+                    <div class="marquee-content" id="product-container">
+                        <p>Đang tải món nước...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="total-box" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin: 15px 0;">
-            <div style="display: flex; justify-content: space-between; font-weight: 900; color: #d32f2f;">
-                <span>TỔNG CỘNG:</span>
-                <span id="total-price">0 VNĐ</span>
+        <footer id="footer" style="padding: 40px 0; background: #fff; border-top: 1px solid #eee;">
+            <div class="inner" style="text-align: center;">
+                <h3 style="color: #6f4e37;">CÀ PHÊ 276 PHÚ THIỆN</h3>
+                <p>Địa chỉ: 276 Hùng Vương, xã Phú Thiện, tỉnh Gia Lai</p>
+                <p><strong>Hotline:</strong> 0383 065 259</p>
+                <div class="copyright" style="margin-top: 20px; font-size: 0.9em; color: #888;">
+                    &copy; 2026 Cà phê 276. Design by Đồng Vĩnh Tín
+                </div>
+            </div>
+        </footer>
+
+        <div id="order-modal" class="modal-overlay">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 style="color: #6f4e37; margin-bottom: 15px;">GIỎ HÀNG CỦA BẠN</h2>
+                
+                <div id="cart-items-list" style="max-height: 200px; overflow-y: auto; text-align: left; margin-bottom: 15px;"></div>
+
+                <div class="total-box" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <div style="display: flex; justify-content: space-between; font-weight: 900; color: #d32f2f;">
+                        <span>TỔNG CỘNG:</span>
+                        <span id="total-price">0 VNĐ</span>
+                    </div>
+                </div>
+
+                <div class="qr-frame" style="max-width: 180px; margin: 0 auto 15px;">
+                    <img src="images/qrbank.jpg" alt="QR Thanh toán" style="width: 100%; height: auto;">
+                </div>
+
+                <a href="javascript:void(0)" id="btn-send-zalo" class="zalo-btn-fixed" style="display: block; background: #0068ff; color: #fff; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold;">
+                    <i class="fa fa-comments"></i> GỬI ĐƠN QUA ZALO
+                </a>
             </div>
         </div>
-
-        <div class="qr-frame" style="max-width: 180px; margin: 0 auto 15px;">
-            <img src="images/qrbank.jpg" alt="QR Thanh toán" style="width: 100%; height: auto;">
-        </div>
-
-        <a href="javascript:void(0)" id="btn-send-zalo" class="zalo-btn-fixed">
-            <i class="fa fa-comments"></i> GỬI ĐƠN QUA ZALO
-        </a>
     </div>
-</div>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
-
-
