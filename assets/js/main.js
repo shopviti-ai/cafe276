@@ -100,4 +100,16 @@ $(document).ready(function() {
     $(document).on('click', '.close-modal', function() {
         $('#order-modal').fadeOut(300);
     });
+    // 8. Xử lý bật/tắt Menu trên Mobile [cite: 2026-02-03]
+$(document).on('click', '#mobile-menu-btn', function() {
+    $('.nav-links').toggleClass('active');
+    // Hiệu ứng đổi màu nút khi nhấn cho chuyên nghiệp [cite: 2026-02-03]
+    $(this).toggleClass('btn-active');
 });
+
+// Tự động đóng menu khi khách nhấn vào một mục (Trang chủ/Thực đơn/Liên hệ)
+$(document).on('click', '.nav-links a', function() {
+    $('.nav-links').removeClass('active');
+});
+});
+
