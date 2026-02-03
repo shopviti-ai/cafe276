@@ -9,41 +9,34 @@
 </head>
 <body class="is-preload coffee-theme">
     <div id="wrapper">
-        <div id="cart-floating-btn">
-            <i class="fa fa-shopping-cart"></i>
-            <span id="cart-count">0</span>
-        </div>
+        <div id="cart-floating-btn"><i class="fa fa-shopping-cart"></i><span id="cart-count">0</span></div>
 
         <header id="header">
             <div class="top-bar">
                 <div class="inner">
                     <div class="contact-info">Hotline: 0383 065 259</div>
-                    <div id="mobile-menu-btn" class="mobile-only"><i class="fa fa-bars"></i> MENU</div>
+                    <div id="mobile-menu-btn" class="mobile-only">MENU</div>
                 </div>
             </div>
             <nav id="horizontal-nav">
-                <div class="inner">
-                    <ul id="main-menu">
-                        <li><a href="index.html">TRANG CHỦ</a></li>
-                        <li><a href="#coffee-menu">THỰC ĐƠN</a></li>
-                        <li><a href="#footer">LIÊN HỆ</a></li>
-                    </ul>
-                </div>
+                <ul id="main-menu">
+                    <li><a href="index.html">TRANG CHỦ</a></li>
+                    <li><a href="#coffee-menu">THỰC ĐƠN</a></li>
+                    <li><a href="#footer">LIÊN HỆ</a></li>
+                </ul>
             </nav>
         </header>
 
         <section class="banner-wrapper">
-            <div class="banner-container">
-                <img src="images/banner276.gif" alt="Cà phê 276" class="full-banner">
-            </div>
+            <img src="images/banner276.gif" alt="Cà phê 276" class="full-banner">
         </section>
 
         <section id="coffee-menu" class="marquee-section">
             <div class="inner">
-                <header class="section-title"><h2 class="title-coffee">THỰC ĐƠN HÔM NAY</h2></header>
+                <h2 class="title-coffee">THỰC ĐƠN HÔM NAY</h2>
                 <div class="marquee-container">
                     <div class="marquee-content" id="product-container">
-                        <p>Đang chuẩn bị thực đơn...</p>
+                        <p>Đang tải món nước...</p>
                     </div>
                 </div>
             </div>
@@ -51,12 +44,7 @@
 
         <footer id="footer">
             <div class="inner">
-                <div class="footer-grid">
-                    <section>
-                        <h3>CÀ PHÊ 276</h3>
-                        <p>276 Hùng Vương, Phú Thiện, Gia Lai</p>
-                    </section>
-                </div>
+                <p>276 Hùng Vương, Phú Thiện, Gia Lai</p>
                 <div class="copyright">&copy; 2026. Design by Đồng Vĩnh Tín</div>
             </div>
         </footer>
@@ -65,23 +53,11 @@
     <div id="order-modal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h2 style="color: #6f4e37;">GIỎ HÀNG CỦA BẠN</h2>
-            
-            <div id="cart-items-list" style="max-height: 200px; overflow-y: auto; margin-bottom: 15px;">
-                </div>
-
-            <div class="order-summary">
-                <div style="display: flex; justify-content: space-between; font-weight: 900; color: #d32f2f; padding: 10px; background: #f9f9f9; border-radius: 8px;">
-                    <span>TỔNG CỘNG:</span>
-                    <span id="total-price">0 VNĐ</span>
-                </div>
-            </div>
-
-            <div class="qr-section" style="margin-top: 15px;">
-                <p style="font-size: 0.8em;">Quét mã để thanh toán đơn hàng</p>
-                <div class="qr-frame"><img src="images/qrbank.jpg" alt="QR Payment"></div>
-            </div>
-            <button class="button close-modal" style="width: 100%; background: #6f4e37 !important; margin-top: 10px;">TIẾP TỤC CHỌN MÓN</button>
+            <h2 style="color: #6f4e37;">GIỎ HÀNG</h2>
+            <div id="cart-items-list"></div>
+            <div class="total-box">TỔNG: <span id="total-price">0 VNĐ</span></div>
+            <div class="qr-frame"><img src="images/qrbank.jpg" alt="Thanh toán"></div>
+            <a href="javascript:void(0)" id="btn-send-zalo" class="zalo-btn">GỬI ĐƠN QUA ZALO</a>
         </div>
     </div>
 
