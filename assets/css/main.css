@@ -1,69 +1,201 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-body { font-family: 'Inter', sans-serif; background: #fdfcf0; margin: 0; }
 
-/* Nút giỏ hàng nổi */
-#cart-floating-btn {
-    position: fixed; bottom: 20px; right: 20px;
-    background: #6f4e37; color: #fff; width: 60px; height: 60px;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 24px; cursor: pointer; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-#cart-count {
-    position: absolute; top: -5px; right: -5px; background: #d32f2f;
-    font-size: 12px; width: 22px; height: 22px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
+/* --- 1. CẤU HÌNH CHUNG --- */
+body { 
+    font-family: 'Inter', sans-serif !important; 
+    background: #fdfcf0; 
+    margin: 0; 
+    color: #4e342e;
+    overflow-x: hidden; /* Tránh cuộn ngang toàn trang [cite: 2026-02-03] */
 }
 
-/* Menu chạy ngang  */
-.marquee-container { width: 100%; overflow: hidden; padding: 20px 0; }
-.marquee-content { display: flex; width: max-content; animation: scroll-left 40s linear infinite; }
-.p-card { width: 260px; margin-right: 20px; background: #fff; padding: 15px; border-radius: 15px; text-align: center; flex-shrink: 0; border: 1px solid #eee; }
-.p-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; }
+.inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
 
-/* Modal & QR  */
-.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; justify-content: center; align-items: center; }
-.modal-content { background: #fff; padding: 25px; border-radius: 20px; width: 90%; max-width: 400px; position: relative; text-align: center; max-height: 90vh; overflow-y: auto; }
-.qr-frame { max-width: 180px; margin: 10px auto; border: 1px solid #eee; padding: 5px; }
-.qr-frame img { width: 100%; height: auto; }
-.close-modal { position: absolute; top: 10px; right: 15px; font-size: 30px; cursor: pointer; color: #6f4e37; }
+/* --- 2. HEADER & MENU (Sửa lỗi gạch đầu dòng) [cite: 2026-02-03] --- */
+.top-bar { background: #fff; padding: 10px 0; border-bottom: 1px solid #eee; }
+.top-bar .inner { display: flex; justify-content: space-between; align-items: center; }
 
-/* Dòng sản phẩm trong giỏ ] */
-.cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 0.9em; }
-.remove-item { color: #d32f2f; cursor: pointer; font-weight: bold; margin-left: 10px; }
+#horizontal-nav { 
+    background: #6f4e37 !important; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+}
 
-@keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-/* --- SỬA LỖI MENU & BANNER [cite: 2026-02-03] --- */
-#horizontal-nav { background: #6f4e37 !important; text-align: center; }
-#horizontal-nav ul { display: flex; justify-content: center; list-style: none; margin: 0; padding: 0; }
-#horizontal-nav ul li a { color: #fff !important; padding: 15px 20px; display: inline-block; text-decoration: none; font-weight: bold; }
+#horizontal-nav ul { 
+    display: flex; 
+    justify-content: center; 
+    list-style: none !important; /* Xóa dấu chấm gạch đầu dòng [cite: 2026-02-03] */
+    margin: 0; 
+    padding: 0; 
+}
 
-/* Banner hiện đầy đủ, không bị cắt [cite: 2026-02-03] */
-.banner-wrapper { width: 100%; overflow: hidden; background: #000; }
-.full-banner { width: 100%; height: auto; display: block; }
+#horizontal-nav ul li a { 
+    color: #fff !important; 
+    padding: 15px 20px; 
+    display: block; 
+    text-decoration: none; 
+    font-weight: bold; 
+    transition: 0.3s;
+}
 
-/* Sửa lỗi nút bấm không có hình khối */
+#horizontal-nav ul li a:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* --- 3. BANNER (Hiển thị đầy đủ kích thước) [cite: 2026-02-03] --- */
+.banner-wrapper { 
+    width: 100%; 
+    background: #000; 
+    overflow: hidden; 
+    line-height: 0; 
+}
+
+.full-banner { 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    object-fit: contain; /* Giữ nguyên tỷ lệ ảnh Tín thiết kế [cite: 2026-02-03] */
+}
+
+/* --- 4. THỰC ĐƠN CHẠY NGANG (MARQUEE) --- */
+.marquee-container { width: 100%; overflow: hidden; padding: 30px 0; }
+
+.marquee-content { 
+    display: flex !important; 
+    width: max-content; 
+    animation: scroll-left 40s linear infinite; 
+}
+
+.marquee-container:hover .marquee-content { animation-play-state: paused; }
+
+.p-card { 
+    width: 280px; 
+    margin-right: 25px; 
+    background: #fff; 
+    padding: 20px; 
+    border-radius: 15px; 
+    text-align: center; 
+    flex-shrink: 0; 
+    border: 1px solid #eee; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.p-card img { 
+    width: 100%; 
+    height: 180px; 
+    object-fit: cover; 
+    border-radius: 10px; 
+    margin-bottom: 15px;
+}
+
+/* --- 5. NÚT BẤM & GIỎ HÀNG NỔI --- */
 .btn-add {
-    background: #6f4e37 !important; color: #fff !important;
-    padding: 10px 20px !important; border-radius: 5px;
-    display: inline-block; text-decoration: none !important; margin-top: 10px;
+    background: #6f4e37 !important; 
+    color: #fff !important;
+    padding: 10px 20px !important; 
+    border-radius: 8px;
+    display: inline-block; 
+    text-decoration: none !important; 
+    font-weight: bold;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* Giỏ hàng nổi */
+.btn-add:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(111, 78, 55, 0.3); }
+
 #cart-floating-btn {
-    position: fixed; bottom: 20px; right: 20px;
-    background: #d32f2f; color: #fff; width: 50px; height: 50px;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    z-index: 9999; cursor: pointer;
+    position: fixed; 
+    bottom: 25px; 
+    right: 25px;
+    background: #d32f2f; 
+    color: #fff; 
+    width: 55px; 
+    height: 55px;
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    z-index: 9999; 
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
-#cart-count { position: absolute; top: -5px; right: -5px; background: #000; padding: 2px 6px; border-radius: 50%; font-size: 10px; }
 
-/* Marquee chạy ngang [cite: 2026-02-03] */
-.marquee-container { overflow: hidden; width: 100%; }
-.marquee-content { display: flex; width: max-content; animation: scroll-left 40s linear infinite; }
-@keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+#cart-count { 
+    position: absolute; 
+    top: -5px; 
+    right: -5px; 
+    background: #000; 
+    color: #fff;
+    padding: 2px 7px; 
+    border-radius: 50%; 
+    font-size: 11px; 
+    font-weight: bold;
+}
 
-/* Modal tinh gọn */
-.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10001; align-items: center; justify-content: center; }
-.modal-content { background: #fff; padding: 20px; border-radius: 15px; width: 90%; max-width: 350px; text-align: center; }
-.qr-frame img { max-width: 150px; margin: 10px auto; }
-.zalo-btn { background: #0068ff; color: #fff; padding: 10px; display: block; border-radius: 5px; text-decoration: none; }
+/* --- 6. MODAL & THANH TOÁN --- */
+.modal-overlay { 
+    display: none; 
+    position: fixed; 
+    top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.85); 
+    z-index: 10001; 
+    align-items: center; 
+    justify-content: center; 
+    backdrop-filter: blur(5px);
+}
+
+.modal-content { 
+    background: #fff; 
+    padding: 25px; 
+    border-radius: 20px; 
+    width: 90%; 
+    max-width: 400px; 
+    position: relative; 
+    text-align: center; 
+    max-height: 90vh; 
+    overflow-y: auto; 
+}
+
+.close-modal { 
+    position: absolute; 
+    top: 10px; 
+    right: 15px; 
+    font-size: 35px; 
+    cursor: pointer; 
+    color: #6f4e37; 
+}
+
+.qr-frame img { 
+    max-width: 200px; 
+    margin: 15px auto; 
+    border: 1px solid #eee; 
+    padding: 10px; 
+}
+
+.zalo-btn { 
+    background: #0068ff; 
+    color: #fff !important; 
+    padding: 12px; 
+    display: block; 
+    border-radius: 10px; 
+    text-decoration: none; 
+    font-weight: bold; 
+    margin-top: 15px;
+}
+
+/* --- 7. HIỆU ỨNG & RESPONSIVE --- */
+@keyframes scroll-left { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-50%); } 
+}
+
+@media screen and (max-width: 768px) {
+    #horizontal-nav ul { flex-direction: column; }
+    .contact-info { font-size: 0.9em; }
+    .mobile-only { display: block !important; cursor: pointer; color: #6f4e37; font-weight: 900; }
+}
