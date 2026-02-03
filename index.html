@@ -14,57 +14,50 @@
         <header id="header">
     <div class="top-bar">
         <div class="inner">
-            <div class="contact-header">Hotline: 0383 065 259</div>
+            <div class="contact-info">Hotline: 0383 065 259</div>
             <div id="mobile-menu-btn" class="mobile-only"><i class="fa fa-bars"></i> MENU</div>
         </div>
     </div>
     <nav id="horizontal-nav">
-        <div class="inner">
-            <ul class="nav-links">
-                <li><a href="index.html">TRANG CHỦ</a></li>
-                <li><a href="#coffee-menu">THỰC ĐƠN</a></li>
-                <li><a href="#footer">LIÊN HỆ</a></li>
-            </ul>
-        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">TRANG CHỦ</a></li>
+            <li><a href="#coffee-menu">THỰC ĐƠN</a></li>
+            <li><a href="#footer">LIÊN HỆ</a></li>
+        </ul>
     </nav>
 </header>
 
-        <section class="banner-wrapper">
-            <img src="images/banner276.gif" alt="Cà phê 276" class="full-banner">
-        </section>
+<section class="banner-wrapper">
+    <img src="images/banner276.gif" alt="Cà phê 276 Phú Thiện" class="full-banner">
+</section>
 
-        <section id="coffee-menu" class="marquee-section">
-            <div class="inner">
-                <h2 class="title-coffee">THỰC ĐƠN HÔM NAY</h2>
-                <div class="marquee-container">
-                    <div class="marquee-content" id="product-container">
-                        <p>Đang tải món nước...</p>
-                    </div>
-                </div>
+<div id="order-modal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 style="color: #6f4e37; margin-bottom: 15px;">GIỎ HÀNG CỦA BẠN</h2>
+        
+        <div id="cart-items-list" style="max-height: 200px; overflow-y: auto; text-align: left;"></div>
+
+        <div class="total-box" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin: 15px 0;">
+            <div style="display: flex; justify-content: space-between; font-weight: 900; color: #d32f2f;">
+                <span>TỔNG CỘNG:</span>
+                <span id="total-price">0 VNĐ</span>
             </div>
-        </section>
-
-        <footer id="footer">
-            <div class="inner">
-                <p>276 Hùng Vương, Phú Thiện, Gia Lai</p>
-                <div class="copyright">&copy; 2026. Design by Đồng Vĩnh Tín</div>
-            </div>
-        </footer>
-    </div>
-
-    <div id="order-modal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 style="color: #6f4e37;">GIỎ HÀNG</h2>
-            <div id="cart-items-list"></div>
-            <div class="total-box">TỔNG: <span id="total-price">0 VNĐ</span></div>
-            <div class="qr-frame"><img src="images/qrbank.jpg" alt="Thanh toán"></div>
-            <a href="javascript:void(0)" id="btn-send-zalo" class="zalo-btn">GỬI ĐƠN QUA ZALO</a>
         </div>
+
+        <div class="qr-frame" style="max-width: 180px; margin: 0 auto 15px;">
+            <img src="images/qrbank.jpg" alt="QR Thanh toán" style="width: 100%; height: auto;">
+        </div>
+
+        <a href="javascript:void(0)" id="btn-send-zalo" class="zalo-btn-fixed">
+            <i class="fa fa-comments"></i> GỬI ĐƠN QUA ZALO
+        </a>
     </div>
+</div>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+
 
