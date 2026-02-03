@@ -1,78 +1,78 @@
-let currentPrice = 0; // Biến lưu giá món đang chọn để tính toán [cite: 2026-02-03]
+let cart = []; // Mảng chứa đơn hàng của Tín [cite: 2026-02-03]
 
 $(document).ready(function() {
-    // 1. Đường dẫn Web App của Đồng Vĩnh Tín [cite: 2026-02-03]
     const appsScriptURL = "https://script.google.com/macros/s/AKfycbxXsgNyv_rpAxflIrsr7x_bo7_bcUkTpYVcGj2lHY_njMk4PIMd6Qnq17nPZWn4hzwp/exec";
 
-    // 2. Tải thực đơn 18 món và tạo hiệu ứng chạy ngang (Marquee)
+    // 1. Lấy thực đơn 18 món 
     fetch(appsScriptURL)
         .then(res => res.json())
         .then(data => {
-            let htmlContent = '';
+            let html = '';
             data.forEach(item => {
-                htmlContent += `
+                html += `
                 <article class="p-card">
                     <img src="${item.image}" alt="${item.name}">
                     <h3 style="color: #6f4e37;">${item.name}</h3>
                     <p class="p-price">${item.price} VNĐ</p>
-                    <a href="javascript:void(0)" class="button primary small btn-buy" 
-                       data-name="${item.name}" 
-                       data-price="${item.price}">MUA NGAY</a>
+                    <a href="javascript:void(0)" class="button primary small btn-add" 
+                       data-name="${item.name}" data-price="${item.price}">THÊM VÀO GIỎ</a>
                 </article>`;
             });
-
-            // Nhân đôi dữ liệu để dải chạy ngang không bị hở khi lặp lại [cite: 2026-02-03]
-            $('#product-container').html(htmlContent + htmlContent);
-        })
-        .catch(err => {
-            console.error("Lỗi nạp thực đơn:", err);
-            $('#product-container').html('<p>Đang kiểm tra kết nối Google Sheets...</p>');
+            $('#product-container').html(html + html);
         });
 
-    // 3. Xử lý khi khách bấm "MUA NGAY" [cite: 2026-02-03]
-    $(document).on('click', '.btn-buy', function(e) {
-        e.preventDefault();
+    // 2. Thêm món vào giỏ 
+    $(document).on('click', '.btn-add', function() {
         const name = $(this).data('name');
-        const priceStr = $(this).data('price').toString();
+        const price = parseInt($(this).data('price').toString().replace(/[^0-9]/g, ''));
         
-        // Chuyển "15.000" thành số 15000 để tính toán [cite: 2026-02-03]
-        currentPrice = parseInt(priceStr.replace(/[^0-9]/g, ''));
+        let item = cart.find(i => i.name === name);
+        if (item) { item.quantity++; } 
+        else { cart.push({ name, price, quantity: 1 }); }
         
-        // Đổ thông tin món vào Modal
-        $('#selected-item-box').html(`
-            <p style="margin-bottom:5px;"><strong>Món:</strong> ${name}</p>
-            <p><strong>Đơn giá:</strong> ${currentPrice.toLocaleString()} VNĐ</p>
-        `);
-        
-        // Reset số lượng về 1 và tính tiền [cite: 2026-02-03]
-        $('#buy-quantity').val(1);
-        updateTotal();
-
-        // Hiện Modal tại 276 Hùng Vương
-        $('#order-modal').css('display', 'flex').hide().fadeIn(300);
+        renderCart();
+        // Hiệu ứng nảy nút giỏ hàng cho sinh động 
+        $('#cart-floating-btn').css('transform', 'scale(1.2)').delay(100).queue(function(n){ $(this).css('transform', 'scale(1)'); n(); });
     });
 
-    // 4. Lắng nghe thay đổi số lượng để tính lại "Thành tiền" [cite: 2026-02-03]
-    $(document).on('input change', '#buy-quantity', function() {
-        updateTotal();
-    });
+    // 3. Hiển thị danh sách giỏ hàng 
+    function renderCart() {
+        let total = 0;
+        let count = 0;
+        let html = '';
 
-    function updateTotal() {
-        let qty = parseInt($('#buy-quantity').val());
-        if (isNaN(qty) || qty < 1) qty = 1; // Đảm bảo số lượng tối thiểu là 1
-        
-        const total = qty * currentPrice;
-        $('#total-price').text(total.toLocaleString() + ' VNĐ');
+        cart.forEach((item, index) => {
+            total += item.price * item.quantity;
+            count += item.quantity;
+            html += `
+                <div class="cart-item">
+                    <div style="text-align:left;">
+                        <strong>${item.name}</strong><br>
+                        <small>${item.price.toLocaleString()} x ${item.quantity}</small>
+                    </div>
+                    <div>
+                        <span>${(item.price * item.quantity).toLocaleString()}</span>
+                        <span class="remove-item" data-index="${index}">&times;</span>
+                    </div>
+                </div>`;
+        });
+
+        $('#cart-count').text(count);
+        $('#cart-items-list').html(html || '<p>Giỏ hàng đang trống!</p>');
+        $('#total-price').text(total.toLocaleString('vi-VN') + ' VNĐ');
     }
 
-    // 5. Lệnh đóng Modal [cite: 2026-02-02]
-    $(document).on('click', '.close-modal', function() {
-        $('#order-modal').fadeOut(300);
+    // 4. Xóa món & Mở Modal 
+    $(document).on('click', '.remove-item', function() {
+        cart.splice($(this).data('index'), 1);
+        renderCart();
     });
 
-    $(window).on('click', function(event) {
-        if ($(event.target).is('#order-modal')) {
-            $('#order-modal').fadeOut(300);
-        }
+    $('#cart-floating-btn').on('click', function() {
+        $('#order-modal').fadeIn(300).css('display', 'flex');
+    });
+
+    $('.close-modal').on('click', function() {
+        $('#order-modal').fadeOut(300);
     });
 });
