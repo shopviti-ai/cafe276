@@ -1,10 +1,10 @@
 let cart = []; 
 
 $(document).ready(function() {
-    // 1. Đường dẫn Web App của Đồng Vĩnh Tín
+    // 1. Đường dẫn Web App lấy dữ liệu từ Google Sheets
     const appsScriptURL = "https://script.google.com/macros/s/AKfycbxXsgNyv_rpAxflIrsr7x_bo7_bcUkTpYVcGj2lHY_njMk4PIMd6Qnq17nPZWn4hzwp/exec";
 
-    // 2. Tải thực đơn từ Google Sheets
+    // 2. Tải thực đơn 18 món và tạo hiệu ứng chạy ngang
     fetch(appsScriptURL)
         .then(res => res.json())
         .then(data => {
@@ -19,11 +19,12 @@ $(document).ready(function() {
                        data-name="${item.name}" data-price="${item.price}">THÊM VÀO GIỎ</a>
                 </article>`;
             });
+            // Nhân đôi dữ liệu (html + html) để dải chạy ngang không bị hở [cite: 2026-02-03]
             $('#product-container').html(html + html);
         })
         .catch(err => console.error("Lỗi tải thực đơn:", err));
 
-    // 3. Thêm món vào giỏ
+    // 3. Thêm món vào giỏ hàng
     $(document).on('click', '.btn-add', function() {
         const name = $(this).data('name');
         const price = parseInt($(this).data('price').toString().replace(/[^0-9]/g, ''));
@@ -39,7 +40,7 @@ $(document).ready(function() {
         alert('Đã thêm ' + name + ' vào giỏ hàng!');
     });
 
-    // 4. Hiển thị danh sách giỏ hàng
+    // 4. Hiển thị danh sách giỏ hàng trong Modal
     function renderCart() {
         let total = 0;
         let count = 0;
@@ -72,7 +73,7 @@ $(document).ready(function() {
         renderCart();
     });
 
-    // 6. Gửi đơn qua Facebook Messenger [cite: 2026-02-03]
+    // 6. Gửi đơn qua Facebook Messenger (Sao chép và chuyển hướng) [cite: 2026-02-03]
     $(document).on('click', '#btn-send-messenger', function(e) {
         e.preventDefault();
         if (cart.length === 0) {
@@ -86,19 +87,18 @@ $(document).ready(function() {
         });
         message += "--------------------------\n";
         message += "TỔNG CỘNG: " + $('#total-price').text() + "\n";
-        message += "Địa chỉ: 276 Hùng Vương, Phú Thiện, Gia Lai";
+        message += "Địa chỉ nhận: 276 Hùng Vương, Phú Thiện, Gia Lai";
 
-        // Sao chép tin nhắn vào Clipboard [cite: 2026-02-03]
+        // Sử dụng Clipboard API hiện đại [cite: 2026-02-03]
         navigator.clipboard.writeText(message).then(function() {
-            alert("Đơn hàng đã được sao chép! Bạn hãy dán (Paste) vào Messenger để gửi cho quán nhé.");
-            // Mở link Messenger Fanpage
+            alert("Đã sao chép đơn hàng! Tín sẽ mở Fanpage, bạn hãy dán (Paste) đơn vào Messenger nhé.");
             window.open("https://m.me/cafeep276", "_blank");
         }).catch(function(err) {
             window.open("https://m.me/cafeep276", "_blank");
         });
     });
 
-    // 7. Điều khiển Modal và Menu Mobile
+    // 7. Điều khiển Modal (Bật/Tắt)
     $(document).on('click', '#cart-floating-btn', function() {
         $('#order-modal').fadeIn(300).css('display', 'flex');
     });
@@ -107,6 +107,7 @@ $(document).ready(function() {
         $('#order-modal').fadeOut(300);
     });
 
+    // 8. Xử lý Menu Mobile [cite: 2026-02-03]
     $(document).on('click', '#mobile-menu-btn', function() {
         $('.nav-links').toggleClass('active');
         $(this).toggleClass('btn-active');
