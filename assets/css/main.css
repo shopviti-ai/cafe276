@@ -227,37 +227,40 @@ body {
 
 .messenger-btn:hover { background: #0066cc !important; }
 
-/* --- 7. MOBILE OPTIMIZATION --- */
-@media screen and (max-width: 768px) {
-    #mobile-menu-btn {
-        display: block !important;
-        cursor: pointer;
-        padding: 15px;
-        color: #fff;
-        font-weight: 900;
-    }
-
-    .nav-links { 
-        display: none !important; 
-        flex-direction: column;
-        background: var(--coffee-brown);
-        width: 100%;
-        position: absolute;
-        top: 100%; 
-        left: 0;
-        z-index: 999;
-    }
-
-    .nav-links.active { 
-        display: flex !important; 
-    }
-
-    .full-banner {
-        max-height: 350px;
-    }
+/* --- FIX NÚT MENU MOBILE TÀNG HÌNH --- */
+#mobile-menu-btn {
+    display: none; /* Mặc định ẩn trên máy tính */
 }
 
-@keyframes scroll-left { 
-    0% { transform: translateX(0); } 
-    100% { transform: translateX(-50%); } 
+@media screen and (max-width: 768px) {
+    #mobile-menu-btn {
+        display: block !important; /* Hiện ra trên điện thoại */
+        background: #6f4e37 !important; /* Màu nâu cà phê 276 [cite: 2026-02-03] */
+        color: #fff !important; /* Chữ trắng cho nổi bật */
+        padding: 10px 20px;
+        margin: 10px auto;
+        border-radius: 8px;
+        font-weight: 900;
+        text-align: center;
+        width: 120px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    /* Hiệu ứng khi nhấn vào nút Menu */
+    #mobile-menu-btn.btn-active {
+        background: #4e342e !important; 
+        transform: scale(0.95);
+    }
+
+    /* Đảm bảo nav-links không bị đè lên Hotline */
+    .nav-links {
+        position: relative;
+        width: 100%;
+        display: none; /* Mặc định ẩn khi chưa nhấn nút */
+    }
+    
+    .nav-links.active {
+        display: flex !important; /* Hiện ra khi đã nhấn nút */
+    }
 }
