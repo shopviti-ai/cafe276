@@ -1,21 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 
-/* --- 1. RESET & PHÔNG CHỮ HƯỚNG TECH --- */
+/* --- 1. BIẾN VÀ CẤU HÌNH CHUNG --- */
+:root {
+    --coffee-brown: #6f4e37;
+    --coffee-dark: #4e342e;
+    --messenger-blue: #0084ff;
+    --error-red: #d32f2f;
+    --bg-cream: #fdfcf0;
+}
+
 * { 
     box-sizing: border-box; 
-    transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt mà cho toàn web */
+    transition: all 0.3s ease; 
 }
 
 body { 
     font-family: 'Inter', sans-serif !important; 
-    background: #fdfcf0; 
+    background: var(--bg-cream); 
     margin: 0; 
     padding: 0;
-    color: #4e342e;
+    color: var(--coffee-dark);
     overflow-x: hidden;
 }
 
-/* --- 2. HEADER & MENU (Xử lý dứt điểm gạch đầu dòng)  --- */
+/* --- 2. HEADER & MENU (Xử lý dứt điểm gạch đầu dòng) --- */
 .top-bar { 
     background: #fff; 
     padding: 10px 0; 
@@ -25,53 +33,19 @@ body {
 
 .contact-header { 
     font-weight: 700; 
-    color: #6f4e37; 
+    color: var(--coffee-brown); 
     font-size: 0.9em; 
 }
 
-/* --- SỬA LỖI MENU (Xóa hoàn toàn gạch đầu dòng) --- */
-#horizontal-nav ul { 
-    display: flex !important; 
-    justify-content: center; 
-    list-style: none !important; /* QUAN TRỌNG: Ép xóa dấu chấm */
-    margin: 0 !important; 
-    padding: 0 !important; 
+#horizontal-nav { 
+    background: var(--coffee-brown) !important; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-#horizontal-nav li { 
-    list-style-type: none !important; /* Chặn đứng dấu chấm */
-    margin: 0;
-}
-
-#horizontal-nav a { 
-    color: #fff !important; 
-    padding: 15px 20px; 
-    display: block; 
-    text-decoration: none !important; 
-    font-weight: bold; 
-}
-
-/* --- SỬA LỖI BANNER QUÁ TO --- */
-.full-banner { 
-    width: 100%; 
-    height: auto; 
-    max-height: 450px; /* Khống chế chiều cao banner để không chiếm hết trang */
-    object-fit: contain; 
-    display: block; 
-}
-
-/* Nút THÊM GIỎ HÀNG rực rỡ */
-.btn-add-to-cart {
-    background: #6f4e37 !important;
-    color: #fff !important;
-    padding: 10px 15px;
-    border-radius: 5px;
-    display: inline-block;
-    text-decoration: none !important;
-    margin-top: 10px;
-}
-
-/* Ép buộc xóa dấu chấm menu và căn giữa */
+/* Xóa bỏ hoàn toàn dấu chấm gạch đầu dòng [cite: 2026-02-03] */
 .nav-links { 
     display: flex !important; 
     justify-content: center; 
@@ -82,7 +56,7 @@ body {
 
 .nav-links li { 
     margin: 0; 
-    list-style-type: none !important; 
+    list-style: none !important;
 }
 
 .nav-links li a { 
@@ -98,10 +72,10 @@ body {
 
 .nav-links li a:hover { 
     background: rgba(255,255,255,0.15); 
-    color: #ffd700 !important; /* Ánh vàng sang trọng khi di chuột */
+    color: #ffd700 !important; 
 }
 
-/* --- 3. BANNER RESPONSIVE (Hiện trọn vẹn tại Phú Thiện)  --- */
+/* --- 3. BANNER RESPONSIVE (Hiện trọn vẹn tại Phú Thiện) --- */
 .banner-wrapper { 
     width: 100%; 
     background: #000; 
@@ -112,9 +86,9 @@ body {
 .full-banner { 
     width: 100%; 
     height: auto; 
-    max-height: 500px; /* Khống chế chiều cao để không bị choán màn hình  */
+    max-height: 500px; /* Khống chế chiều cao cho PC [cite: 2026-02-03] */
     display: block; 
-    object-fit: contain; /* Bảo toàn 100% nội dung banner Tín thiết kế  */
+    object-fit: contain; /* Bảo toàn nội dung banner Tín thiết kế [cite: 2026-02-03] */
 }
 
 /* --- 4. THỰC ĐƠN CHẠY NGANG (MARQUEE) --- */
@@ -133,7 +107,7 @@ body {
 }
 
 .marquee-container:hover .marquee-content { 
-    animation-play-state: paused; /* Dừng lại khi khách xem món */
+    animation-play-state: paused; 
 }
 
 .p-card { 
@@ -156,9 +130,9 @@ body {
     margin-bottom: 15px;
 }
 
-/* --- 5. NÚT BẤM GIỎ HÀNG CHUYÊN NGHIỆP  --- */
+/* --- 5. NÚT BẤM VÀ GIỎ HÀNG --- */
 .btn-add {
-    background: #6f4e37 !important; 
+    background: var(--coffee-brown) !important; 
     color: #fff !important;
     padding: 12px 25px !important; 
     border-radius: 12px;
@@ -168,11 +142,10 @@ body {
     margin-top: 10px;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(111, 78, 55, 0.2);
 }
 
 .btn-add:hover { 
-    background: #4e342e !important; 
+    background: var(--coffee-dark) !important; 
     transform: scale(1.05); 
 }
 
@@ -180,7 +153,7 @@ body {
     position: fixed; 
     bottom: 30px; 
     right: 30px;
-    background: #d32f2f; 
+    background: var(--error-red); 
     color: #fff; 
     width: 65px; 
     height: 65px;
@@ -206,7 +179,7 @@ body {
     border: 2px solid #fff;
 }
 
-/* --- 6. MODAL THANH TOÁN (Tối ưu hóa QR)  --- */
+/* --- 6. MODAL VÀ MESSENGER BUTTON --- */
 .modal-overlay { 
     display: none; 
     position: fixed; 
@@ -231,7 +204,7 @@ body {
 }
 
 .qr-frame img { 
-    max-width: 200px; /* Khống chế QR vừa in màn hình  */
+    max-width: 200px; 
     margin: 20px auto; 
     border: 2px solid #f8f8f8; 
     padding: 10px; 
@@ -239,8 +212,9 @@ body {
     display: block;
 }
 
-.zalo-btn { 
-    background: #0068ff; 
+/* Nút Messenger Facebook [cite: 2026-02-03] */
+.messenger-btn { 
+    background: var(--messenger-blue) !important; 
     color: #fff !important; 
     padding: 16px; 
     display: block; 
@@ -248,27 +222,42 @@ body {
     text-decoration: none; 
     font-weight: 700; 
     margin-top: 15px;
-    box-shadow: 0 5px 15px rgba(0, 104, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 132, 255, 0.3);
 }
 
-.zalo-btn:hover { background: #0056d2 !important; }
+.messenger-btn:hover { background: #0066cc !important; }
 
 /* --- 7. MOBILE OPTIMIZATION --- */
 @media screen and (max-width: 768px) {
-    /* Mặc định ẩn menu trên mobile  */
+    #mobile-menu-btn {
+        display: block !important;
+        cursor: pointer;
+        padding: 15px;
+        color: #fff;
+        font-weight: 900;
+    }
+
     .nav-links { 
         display: none !important; 
         flex-direction: column;
-        background: #6f4e37;
+        background: var(--coffee-brown);
         width: 100%;
         position: absolute;
-        top: 100%; /* Đẩy xuống dưới thanh top-bar */
+        top: 100%; 
         left: 0;
         z-index: 999;
     }
 
-    /* Khi có class .active thì hiện ra  */
     .nav-links.active { 
         display: flex !important; 
     }
+
+    .full-banner {
+        max-height: 350px;
+    }
+}
+
+@keyframes scroll-left { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-50%); } 
 }
