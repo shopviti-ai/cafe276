@@ -77,19 +77,36 @@
     </div>
 
     <div id="order-modal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 style="color: #6f4e37;">THÔNG TIN MUA HÀNG</h2>
-            <div id="selected-product-info"></div>
-            <div class="shop-box">
-                <p><strong>Địa chỉ:</strong> 276 Hùng Vương, Phú Thiện</p>
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 style="color: #6f4e37;">XÁC NHẬN ĐƠN HÀNG</h2>
+        
+        <div id="selected-item-box" style="text-align: left; margin-bottom: 20px;">
             </div>
-            <div class="qr-frame"><img src="images/qrbank.jpg" alt="QR"></div>
-            <button class="button close-modal" style="width: 100%; background: #6f4e37 !important;">QUAY LẠI</button>
+
+        <div class="order-calc" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <span>Số lượng:</span>
+                <input type="number" id="buy-quantity" value="1" min="1" style="width: 70px; padding: 5px; text-align: center;">
+            </div>
+            <div style="display: flex; justify-content: space-between; font-weight: bold; color: #d32f2f;">
+                <span>Thành tiền:</span>
+                <span id="total-price">0 VNĐ</span>
+            </div>
         </div>
+
+        <p style="font-size: 0.8em; color: #666;">Địa chỉ: 276 Hùng Vương, Phú Thiện</p>
+        
+        <div class="qr-frame" style="max-width: 220px; margin: 0 auto;">
+            <img src="images/qrbank.jpg" alt="QR" style="width: 100%; height: auto; display: block;">
+        </div>
+
+        <button class="button close-modal" style="width: 100%; background: #6f4e37 !important; margin-top: 15px;">QUAY LẠI</button>
     </div>
+</div>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+
