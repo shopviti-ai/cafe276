@@ -9,13 +9,16 @@
 </head>
 <body class="is-preload coffee-theme">
     <div id="wrapper">
+        <div id="cart-floating-btn">
+            <i class="fa fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+        </div>
+
         <header id="header">
             <div class="top-bar">
                 <div class="inner">
                     <div class="contact-info">Hotline: 0383 065 259</div>
-                    <div id="mobile-menu-btn" class="mobile-only">
-                        <i class="fa fa-bars"></i> MENU
-                    </div>
+                    <div id="mobile-menu-btn" class="mobile-only"><i class="fa fa-bars"></i> MENU</div>
                 </div>
             </div>
             <nav id="horizontal-nav">
@@ -31,27 +34,16 @@
 
         <section class="banner-wrapper">
             <div class="banner-container">
-                <img src="images/banner276.gif" alt="Banner Cà phê 276" class="full-banner">
-            </div>
-        </section>
-
-        <section class="trust-container">
-            <div class="inner">
-                <div class="trust-item"><i class="fa fa-coffee"></i><h4>Rang xay sạch</h4><p>Cà phê máy & phin nguyên chất [cite: 2026-02-03].</p></div>
-                <div class="trust-item"><i class="fa fa-map-marker"></i><h4>Phú Thiện</h4><p>276 Hùng Vương, Gia Lai.</p></div>
-                <div class="trust-item"><i class="fa fa-wifi"></i><h4>Wifi Mạnh</h4><p>Lý tưởng để làm việc IT.</p></div>
-                <div class="trust-item"><i class="fa fa-heart"></i><h4>Tận tâm</h4><p>Phục vụ bởi Đồng Vĩnh Tín.</p></div>
+                <img src="images/banner276.gif" alt="Cà phê 276" class="full-banner">
             </div>
         </section>
 
         <section id="coffee-menu" class="marquee-section">
             <div class="inner">
-                <header class="section-title">
-                    <h2 class="title-coffee">THỰC ĐƠN HÔM NAY</h2>
-                </header>
+                <header class="section-title"><h2 class="title-coffee">THỰC ĐƠN HÔM NAY</h2></header>
                 <div class="marquee-container">
                     <div class="marquee-content" id="product-container">
-                        <p>Đang pha chế thực đơn...</p>
+                        <p>Đang chuẩn bị thực đơn...</p>
                     </div>
                 </div>
             </div>
@@ -62,51 +54,38 @@
                 <div class="footer-grid">
                     <section>
                         <h3>CÀ PHÊ 276</h3>
-                        <p>Địa chỉ: 276 Hùng Vương, xã Phú Thiện, tỉnh Gia Lai.</p>
-                    </section>
-                    <section>
-                        <h3>LIÊN HỆ</h3>
-                        <ul class="social-links">
-                            <li><a href="https://zalo.me/0383065259">Zalo: 0383 065 259</a></li>
-                        </ul>
+                        <p>276 Hùng Vương, Phú Thiện, Gia Lai</p>
                     </section>
                 </div>
-                <div class="copyright">&copy; 2026 Cà phê 276. Design by Đồng Vĩnh Tín.</div>
+                <div class="copyright">&copy; 2026. Design by Đồng Vĩnh Tín</div>
             </div>
         </footer>
     </div>
 
     <div id="order-modal" class="modal-overlay">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2 style="color: #6f4e37;">XÁC NHẬN ĐƠN HÀNG</h2>
-        
-        <div id="selected-item-box" style="text-align: left; margin-bottom: 20px;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 style="color: #6f4e37;">GIỎ HÀNG CỦA BẠN</h2>
+            
+            <div id="cart-items-list" style="max-height: 200px; overflow-y: auto; margin-bottom: 15px;">
+                </div>
+
+            <div class="order-summary">
+                <div style="display: flex; justify-content: space-between; font-weight: 900; color: #d32f2f; padding: 10px; background: #f9f9f9; border-radius: 8px;">
+                    <span>TỔNG CỘNG:</span>
+                    <span id="total-price">0 VNĐ</span>
+                </div>
             </div>
 
-        <div class="order-calc" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                <span>Số lượng:</span>
-                <input type="number" id="buy-quantity" value="1" min="1" style="width: 70px; padding: 5px; text-align: center;">
+            <div class="qr-section" style="margin-top: 15px;">
+                <p style="font-size: 0.8em;">Quét mã để thanh toán đơn hàng</p>
+                <div class="qr-frame"><img src="images/qrbank.jpg" alt="QR Payment"></div>
             </div>
-            <div style="display: flex; justify-content: space-between; font-weight: bold; color: #d32f2f;">
-                <span>Thành tiền:</span>
-                <span id="total-price">0 VNĐ</span>
-            </div>
+            <button class="button close-modal" style="width: 100%; background: #6f4e37 !important; margin-top: 10px;">TIẾP TỤC CHỌN MÓN</button>
         </div>
-
-        <p style="font-size: 0.8em; color: #666;">Địa chỉ: 276 Hùng Vương, Phú Thiện</p>
-        
-        <div class="qr-frame" style="max-width: 220px; margin: 0 auto;">
-            <img src="images/qrbank.jpg" alt="QR" style="width: 100%; height: auto; display: block;">
-        </div>
-
-        <button class="button close-modal" style="width: 100%; background: #6f4e37 !important; margin-top: 15px;">QUAY LẠI</button>
     </div>
-</div>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
-
