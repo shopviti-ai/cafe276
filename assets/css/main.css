@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 
-/* --- 1. RESET & PHÔNG CHỮ CHUẨN --- */
-* { box-sizing: border-box; }
+/* --- 1. RESET & PHÔNG CHỮ HƯỚNG TECH --- */
+* { 
+    box-sizing: border-box; 
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt mà cho toàn web */
+}
+
 body { 
     font-family: 'Inter', sans-serif !important; 
     background: #fdfcf0; 
@@ -11,24 +15,29 @@ body {
     overflow-x: hidden;
 }
 
-/* --- 2. HEADER & THANH MENU (Sửa lỗi image_73f272) [cite: 2026-02-03] --- */
+/* --- 2. HEADER & MENU (Xử lý dứt điểm gạch đầu dòng) [cite: 2026-02-03] --- */
 .top-bar { 
     background: #fff; 
-    padding: 8px 0; 
-    border-bottom: 1px solid #ddd; 
+    padding: 10px 0; 
+    border-bottom: 1px solid #eee; 
     text-align: center;
 }
-.contact-header { font-weight: 700; color: #6f4e37; font-size: 0.9em; }
+
+.contact-header { 
+    font-weight: 700; 
+    color: #6f4e37; 
+    font-size: 0.9em; 
+}
 
 #horizontal-nav { 
     background: #6f4e37 !important; 
     position: sticky; 
     top: 0; 
     z-index: 1000; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Xóa bỏ hoàn toàn dấu chấm gạch đầu dòng [cite: 2026-02-03] */
+/* Ép buộc xóa dấu chấm menu và căn giữa [cite: 2026-02-03] */
 .nav-links { 
     display: flex !important; 
     justify-content: center; 
@@ -37,20 +46,28 @@ body {
     padding: 0 !important; 
 }
 
-.nav-links li { margin: 0; }
+.nav-links li { 
+    margin: 0; 
+    list-style-type: none !important; 
+}
+
 .nav-links li a { 
     color: #fff !important; 
-    padding: 15px 20px; 
+    padding: 18px 25px; 
     display: block; 
     text-decoration: none !important; 
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.9em;
-    transition: 0.3s;
+    font-size: 0.85em;
+    letter-spacing: 1px;
 }
-.nav-links li a:hover { background: rgba(255,255,255,0.15); }
 
-/* --- 3. BANNER RESPONSIVE (Sửa lỗi phóng to quá mức) [cite: 2026-02-03] --- */
+.nav-links li a:hover { 
+    background: rgba(255,255,255,0.15); 
+    color: #ffd700 !important; /* Ánh vàng sang trọng khi di chuột */
+}
+
+/* --- 3. BANNER RESPONSIVE (Hiện trọn vẹn tại Phú Thiện) [cite: 2026-02-03] --- */
 .banner-wrapper { 
     width: 100%; 
     background: #000; 
@@ -61,137 +78,162 @@ body {
 .full-banner { 
     width: 100%; 
     height: auto; 
-    max-height: 550px; /* Giới hạn để không chiếm hết màn hình như image_73f272 [cite: 2026-02-03] */
+    max-height: 500px; /* Khống chế chiều cao để không bị choán màn hình [cite: 2026-02-03] */
     display: block; 
-    object-fit: contain; /* Hiện trọn vẹn nội dung Cà phê 276 [cite: 2026-02-03] */
+    object-fit: contain; /* Bảo toàn 100% nội dung banner Tín thiết kế [cite: 2026-02-03] */
 }
 
 /* --- 4. THỰC ĐƠN CHẠY NGANG (MARQUEE) --- */
-.marquee-container { width: 100%; overflow: hidden; padding: 40px 0; }
+.marquee-container { 
+    width: 100%; 
+    overflow: hidden; 
+    padding: 40px 0; 
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
 .marquee-content { 
     display: flex !important; 
     width: max-content; 
     animation: scroll-left 40s linear infinite; 
 }
-.marquee-container:hover .marquee-content { animation-play-state: paused; }
+
+.marquee-container:hover .marquee-content { 
+    animation-play-state: paused; /* Dừng lại khi khách xem món [cite: 2026-02-03] */
+}
 
 .p-card { 
     width: 280px; 
-    margin-right: 25px; 
+    margin-right: 30px; 
     background: #fff; 
     padding: 20px; 
-    border-radius: 15px; 
+    border-radius: 20px; 
     text-align: center; 
     flex-shrink: 0; 
-    border: 1px solid #eee; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.03);
 }
 
 .p-card img { 
     width: 100%; 
-    height: 180px; 
+    height: 190px; 
     object-fit: cover; 
-    border-radius: 10px; 
+    border-radius: 15px; 
     margin-bottom: 15px;
 }
 
-/* --- 5. NÚT BẤM & GIỎ HÀNG NỔI (Sửa lỗi image_73efa5) [cite: 2026-02-03] --- */
+/* --- 5. NÚT BẤM GIỎ HÀNG CHUYÊN NGHIỆP [cite: 2026-02-03] --- */
 .btn-add {
     background: #6f4e37 !important; 
     color: #fff !important;
-    padding: 12px 20px !important; 
-    border-radius: 8px;
+    padding: 12px 25px !important; 
+    border-radius: 12px;
     display: inline-block; 
     text-decoration: none !important; 
     font-weight: 700;
     margin-top: 10px;
     border: none;
     cursor: pointer;
-    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(111, 78, 55, 0.2);
 }
-.btn-add:hover { background: #4e342e !important; transform: translateY(-2px); }
+
+.btn-add:hover { 
+    background: #4e342e !important; 
+    transform: scale(1.05); 
+}
 
 #cart-floating-btn {
     position: fixed; 
-    bottom: 25px; 
-    right: 25px;
+    bottom: 30px; 
+    right: 30px;
     background: #d32f2f; 
     color: #fff; 
-    width: 60px; 
-    height: 60px;
+    width: 65px; 
+    height: 65px;
     border-radius: 50%; 
     display: flex; 
     align-items: center; 
     justify-content: center;
     z-index: 9999; 
     cursor: pointer;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
 }
 
 #cart-count { 
     position: absolute; 
-    top: -2px; 
-    right: -2px; 
-    background: #000; 
+    top: -5px; 
+    right: -5px; 
+    background: #1a1a1a; 
     color: #fff;
-    padding: 2px 8px; 
+    padding: 4px 9px; 
     border-radius: 50%; 
-    font-size: 11px; 
+    font-size: 12px; 
     font-weight: 900;
+    border: 2px solid #fff;
 }
 
-/* --- 6. MODAL & THANH TOÁN (Sửa lỗi QR che màn hình) [cite: 2026-02-03] --- */
+/* --- 6. MODAL THANH TOÁN (Tối ưu hóa QR) [cite: 2026-02-03] --- */
 .modal-overlay { 
     display: none; 
     position: fixed; 
     top: 0; left: 0; width: 100%; height: 100%; 
-    background: rgba(0,0,0,0.85); 
+    background: rgba(0,0,0,0.9); 
     z-index: 10001; 
     align-items: center; 
     justify-content: center; 
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(8px);
 }
 
 .modal-content { 
     background: #fff; 
-    padding: 30px; 
-    border-radius: 20px; 
+    padding: 35px; 
+    border-radius: 25px; 
     width: 90%; 
-    max-width: 420px; 
+    max-width: 440px; 
     position: relative; 
     text-align: center; 
-    max-height: 90vh; 
+    max-height: 85vh; 
     overflow-y: auto; 
 }
 
 .qr-frame img { 
-    max-width: 220px; /* Khống chế kích thước mã QR [cite: 2026-02-03] */
-    margin: 15px auto; 
-    border: 1px solid #f0f0f0; 
+    max-width: 200px; /* Khống chế QR vừa in màn hình [cite: 2026-02-03] */
+    margin: 20px auto; 
+    border: 2px solid #f8f8f8; 
     padding: 10px; 
+    border-radius: 15px;
     display: block;
 }
 
 .zalo-btn { 
     background: #0068ff; 
     color: #fff !important; 
-    padding: 14px; 
+    padding: 16px; 
     display: block; 
-    border-radius: 12px; 
+    border-radius: 15px; 
     text-decoration: none; 
     font-weight: 700; 
     margin-top: 15px;
-    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 104, 255, 0.3);
 }
 
-/* --- 7. HIỆU ỨNG & MOBILE --- */
+.zalo-btn:hover { background: #0056d2 !important; }
+
+/* --- 7. MOBILE OPTIMIZATION --- */
+@media screen and (max-width: 768px) {
+    .nav-links { 
+        flex-direction: column; 
+        display: none; 
+        background: #6f4e37;
+        width: 100%;
+    }
+    .nav-links.active { display: flex; }
+    .nav-links li a { border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .mobile-only { display: block !important; cursor: pointer; padding: 15px; color: #fff; font-weight: 900; }
+    .full-banner { max-height: 350px; }
+}
+
 @keyframes scroll-left { 
     0% { transform: translateX(0); } 
     100% { transform: translateX(-50%); } 
-}
-
-@media screen and (max-width: 768px) {
-    .nav-links { flex-direction: column; display: none; }
-    .nav-links.active { display: flex; }
-    .mobile-only { display: block !important; cursor: pointer; padding: 10px; color: #6f4e37; font-weight: 900; }
 }
