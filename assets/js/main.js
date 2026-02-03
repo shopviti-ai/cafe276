@@ -1,8 +1,10 @@
+let currentPrice = 0; // Biến lưu giá món đang chọn để tính toán [cite: 2026-02-03]
+
 $(document).ready(function() {
-    // Đường dẫn Web App của Đồng Vĩnh Tín [cite: 2026-02-03]
+    // 1. Đường dẫn Web App của Đồng Vĩnh Tín [cite: 2026-02-03]
     const appsScriptURL = "https://script.google.com/macros/s/AKfycbxXsgNyv_rpAxflIrsr7x_bo7_bcUkTpYVcGj2lHY_njMk4PIMd6Qnq17nPZWn4hzwp/exec";
 
-    // 1. Tải thực đơn từ Google Sheets và tạo hiệu ứng chạy ngang (Marquee)
+    // 2. Tải thực đơn 18 món và tạo hiệu ứng chạy ngang (Marquee)
     fetch(appsScriptURL)
         .then(res => res.json())
         .then(data => {
@@ -13,48 +15,64 @@ $(document).ready(function() {
                     <img src="${item.image}" alt="${item.name}">
                     <h3 style="color: #6f4e37;">${item.name}</h3>
                     <p class="p-price">${item.price} VNĐ</p>
-                    <a href="javascript:void(0)" class="button primary small btn-buy" data-name="${item.name}">MUA NGAY</a>
+                    <a href="javascript:void(0)" class="button primary small btn-buy" 
+                       data-name="${item.name}" 
+                       data-price="${item.price}">MUA NGAY</a>
                 </article>`;
             });
 
-            // Đổ dữ liệu và nhân đôi để tạo vòng lặp chạy ngang vô tận [cite: 2026-02-03]
+            // Nhân đôi dữ liệu để dải chạy ngang không bị hở khi lặp lại [cite: 2026-02-03]
             $('#product-container').html(htmlContent + htmlContent);
         })
         .catch(err => {
-            console.error("Lỗi tải thực đơn:", err);
-            $('#product-container').html('<p style="color:red;">Lỗi kết nối dữ liệu. Tín hãy kiểm tra quyền "Anyone" trên Apps Script!</p>');
+            console.error("Lỗi nạp thực đơn:", err);
+            $('#product-container').html('<p>Đang kiểm tra kết nối Google Sheets...</p>');
         });
 
-    // 2. Xử lý hiện Modal thông tin đơn hàng khi bấm MUA NGAY [cite: 2026-02-02]
+    // 3. Xử lý khi khách bấm "MUA NGAY" [cite: 2026-02-03]
     $(document).on('click', '.btn-buy', function(e) {
         e.preventDefault();
         const name = $(this).data('name');
+        const priceStr = $(this).data('price').toString();
         
-        // Hiển thị tên món khách chọn
-        $('#selected-product-info').html(`
-            <h3 style="color: #6f4e37; margin-bottom: 10px;">Món đã chọn: ${name}</h3>
-            <p>Vui lòng quét mã QR dưới đây hoặc đến trực tiếp quán để thưởng thức!</p>
+        // Chuyển "15.000" thành số 15000 để tính toán [cite: 2026-02-03]
+        currentPrice = parseInt(priceStr.replace(/[^0-9]/g, ''));
+        
+        // Đổ thông tin món vào Modal
+        $('#selected-item-box').html(`
+            <p style="margin-bottom:5px;"><strong>Món:</strong> ${name}</p>
+            <p><strong>Đơn giá:</strong> ${currentPrice.toLocaleString()} VNĐ</p>
         `);
         
-        // Hiện Modal của Đồng Vĩnh Tín
+        // Reset số lượng về 1 và tính tiền [cite: 2026-02-03]
+        $('#buy-quantity').val(1);
+        updateTotal();
+
+        // Hiện Modal tại 276 Hùng Vương
         $('#order-modal').css('display', 'flex').hide().fadeIn(300);
     });
 
-    // 3. Lệnh đóng Modal (Bấm dấu X hoặc bấm nút Quay lại) [cite: 2026-02-02]
+    // 4. Lắng nghe thay đổi số lượng để tính lại "Thành tiền" [cite: 2026-02-03]
+    $(document).on('input change', '#buy-quantity', function() {
+        updateTotal();
+    });
+
+    function updateTotal() {
+        let qty = parseInt($('#buy-quantity').val());
+        if (isNaN(qty) || qty < 1) qty = 1; // Đảm bảo số lượng tối thiểu là 1
+        
+        const total = qty * currentPrice;
+        $('#total-price').text(total.toLocaleString() + ' VNĐ');
+    }
+
+    // 5. Lệnh đóng Modal [cite: 2026-02-02]
     $(document).on('click', '.close-modal', function() {
         $('#order-modal').fadeOut(300);
     });
 
-    // Đóng modal khi bấm ra ngoài vùng ảnh
     $(window).on('click', function(event) {
         if ($(event.target).is('#order-modal')) {
             $('#order-modal').fadeOut(300);
         }
-    });
-
-    // 4. Xử lý Menu Mobile (Xổ xuống/Thu gọn) [cite: 2026-02-02]
-    $('#mobile-menu-btn').on('click', function() {
-        $('#horizontal-nav').slideToggle(300);
-        $(this).toggleClass('active');
     });
 });
