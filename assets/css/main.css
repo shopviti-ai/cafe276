@@ -29,15 +29,49 @@ body {
     font-size: 0.9em; 
 }
 
-#horizontal-nav { 
-    background: #6f4e37 !important; 
-    position: sticky; 
-    top: 0; 
-    z-index: 1000; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+/* --- SỬA LỖI MENU (Xóa hoàn toàn gạch đầu dòng) --- */
+#horizontal-nav ul { 
+    display: flex !important; 
+    justify-content: center; 
+    list-style: none !important; /* QUAN TRỌNG: Ép xóa dấu chấm */
+    margin: 0 !important; 
+    padding: 0 !important; 
 }
 
-/* Ép buộc xóa dấu chấm menu và căn giữa [cite: 2026-02-03] */
+#horizontal-nav li { 
+    list-style-type: none !important; /* Chặn đứng dấu chấm */
+    margin: 0;
+}
+
+#horizontal-nav a { 
+    color: #fff !important; 
+    padding: 15px 20px; 
+    display: block; 
+    text-decoration: none !important; 
+    font-weight: bold; 
+}
+
+/* --- SỬA LỖI BANNER QUÁ TO --- */
+.full-banner { 
+    width: 100%; 
+    height: auto; 
+    max-height: 450px; /* Khống chế chiều cao banner để không chiếm hết trang */
+    object-fit: contain; 
+    display: block; 
+}
+
+/* Nút THÊM GIỎ HÀNG rực rỡ */
+.btn-add-to-cart {
+    background: #6f4e37 !important;
+    color: #fff !important;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none !important;
+    margin-top: 10px;
+}
+
+/* Ép buộc xóa dấu chấm menu và căn giữa */
 .nav-links { 
     display: flex !important; 
     justify-content: center; 
