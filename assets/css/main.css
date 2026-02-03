@@ -264,3 +264,26 @@ body {
         display: flex !important; /* Hiện ra khi đã nhấn nút */
     }
 }
+.marquee-container {
+    width: 100%;
+    overflow: hidden !important; /* Giấu các món nằm ngoài màn hình [cite: 2026-02-03] */
+    padding: 30px 0;
+    background: #fff;
+}
+
+.marquee-content {
+    display: flex !important;
+    flex-wrap: nowrap !important; 
+    width: max-content !important; 
+    animation: scroll-left 40s linear infinite !important; 
+}
+
+
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquee-container:hover .marquee-content {
+    animation-play-state: paused !important;
+}
