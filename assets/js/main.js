@@ -19,7 +19,6 @@ $(document).ready(function() {
                        data-name="${item.name}" data-price="${item.price}">THÊM VÀO GIỎ</a>
                 </article>`;
             });
-            // Nhân đôi danh sách để tạo vòng lặp chạy ngang không điểm dừng
             $('#product-container').html(html + html);
         })
         .catch(err => console.error("Lỗi tải thực đơn:", err));
@@ -73,26 +72,33 @@ $(document).ready(function() {
         renderCart();
     });
 
-    // 6. Gửi đơn qua Zalo cho Đồng Vĩnh Tín
-    $(document).on('click', '#btn-send-zalo', function() {
+    // 6. Gửi đơn qua Facebook Messenger [cite: 2026-02-03]
+    $(document).on('click', '#btn-send-messenger', function(e) {
+        e.preventDefault();
         if (cart.length === 0) {
             alert("Giỏ hàng đang trống nha Tín!");
             return;
         }
 
-        let message = "--- ĐƠN HÀNG CÀ PHÊ 276 ---\n";
+        let message = "--- ĐƠN HÀNG MỚI CÀ PHÊ 276 ---\n";
         cart.forEach((item, index) => {
             message += `${index + 1}. ${item.name} x${item.quantity}\n`;
         });
         message += "--------------------------\n";
         message += "TỔNG CỘNG: " + $('#total-price').text() + "\n";
-        message += "ĐC: 276 Hùng Vương, Phú Thiện, Gia Lai";
+        message += "Địa chỉ: 276 Hùng Vương, Phú Thiện, Gia Lai";
 
-        const zaloPhone = "0383065259";
-        window.open(`https://zalo.me/${zaloPhone}?text=${encodeURIComponent(message)}`, '_blank');
+        // Sao chép tin nhắn vào Clipboard [cite: 2026-02-03]
+        navigator.clipboard.writeText(message).then(function() {
+            alert("Đơn hàng đã được sao chép! Bạn hãy dán (Paste) vào Messenger để gửi cho quán nhé.");
+            // Mở link Messenger Fanpage
+            window.open("https://m.me/cafeep276", "_blank");
+        }).catch(function(err) {
+            window.open("https://m.me/cafeep276", "_blank");
+        });
     });
 
-    // 7. Điều khiển Modal
+    // 7. Điều khiển Modal và Menu Mobile
     $(document).on('click', '#cart-floating-btn', function() {
         $('#order-modal').fadeIn(300).css('display', 'flex');
     });
@@ -100,16 +106,13 @@ $(document).ready(function() {
     $(document).on('click', '.close-modal', function() {
         $('#order-modal').fadeOut(300);
     });
-    // 8. Xử lý bật/tắt Menu trên Mobile [cite: 2026-02-03]
-$(document).on('click', '#mobile-menu-btn', function() {
-    $('.nav-links').toggleClass('active');
-    // Hiệu ứng đổi màu nút khi nhấn cho chuyên nghiệp [cite: 2026-02-03]
-    $(this).toggleClass('btn-active');
-});
 
-// Tự động đóng menu khi khách nhấn vào một mục (Trang chủ/Thực đơn/Liên hệ)
-$(document).on('click', '.nav-links a', function() {
-    $('.nav-links').removeClass('active');
-});
-});
+    $(document).on('click', '#mobile-menu-btn', function() {
+        $('.nav-links').toggleClass('active');
+        $(this).toggleClass('btn-active');
+    });
 
+    $(document).on('click', '.nav-links a', function() {
+        $('.nav-links').removeClass('active');
+    });
+});
