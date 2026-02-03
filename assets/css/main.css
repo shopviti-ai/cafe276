@@ -15,7 +15,7 @@ body {
     overflow-x: hidden;
 }
 
-/* --- 2. HEADER & MENU (Xử lý dứt điểm gạch đầu dòng) [cite: 2026-02-03] --- */
+/* --- 2. HEADER & MENU (Xử lý dứt điểm gạch đầu dòng)  --- */
 .top-bar { 
     background: #fff; 
     padding: 10px 0; 
@@ -101,7 +101,7 @@ body {
     color: #ffd700 !important; /* Ánh vàng sang trọng khi di chuột */
 }
 
-/* --- 3. BANNER RESPONSIVE (Hiện trọn vẹn tại Phú Thiện) [cite: 2026-02-03] --- */
+/* --- 3. BANNER RESPONSIVE (Hiện trọn vẹn tại Phú Thiện)  --- */
 .banner-wrapper { 
     width: 100%; 
     background: #000; 
@@ -112,9 +112,9 @@ body {
 .full-banner { 
     width: 100%; 
     height: auto; 
-    max-height: 500px; /* Khống chế chiều cao để không bị choán màn hình [cite: 2026-02-03] */
+    max-height: 500px; /* Khống chế chiều cao để không bị choán màn hình  */
     display: block; 
-    object-fit: contain; /* Bảo toàn 100% nội dung banner Tín thiết kế [cite: 2026-02-03] */
+    object-fit: contain; /* Bảo toàn 100% nội dung banner Tín thiết kế  */
 }
 
 /* --- 4. THỰC ĐƠN CHẠY NGANG (MARQUEE) --- */
@@ -133,7 +133,7 @@ body {
 }
 
 .marquee-container:hover .marquee-content { 
-    animation-play-state: paused; /* Dừng lại khi khách xem món [cite: 2026-02-03] */
+    animation-play-state: paused; /* Dừng lại khi khách xem món */
 }
 
 .p-card { 
@@ -156,7 +156,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* --- 5. NÚT BẤM GIỎ HÀNG CHUYÊN NGHIỆP [cite: 2026-02-03] --- */
+/* --- 5. NÚT BẤM GIỎ HÀNG CHUYÊN NGHIỆP  --- */
 .btn-add {
     background: #6f4e37 !important; 
     color: #fff !important;
@@ -206,7 +206,7 @@ body {
     border: 2px solid #fff;
 }
 
-/* --- 6. MODAL THANH TOÁN (Tối ưu hóa QR) [cite: 2026-02-03] --- */
+/* --- 6. MODAL THANH TOÁN (Tối ưu hóa QR)  --- */
 .modal-overlay { 
     display: none; 
     position: fixed; 
@@ -231,7 +231,7 @@ body {
 }
 
 .qr-frame img { 
-    max-width: 200px; /* Khống chế QR vừa in màn hình [cite: 2026-02-03] */
+    max-width: 200px; /* Khống chế QR vừa in màn hình  */
     margin: 20px auto; 
     border: 2px solid #f8f8f8; 
     padding: 10px; 
@@ -255,19 +255,20 @@ body {
 
 /* --- 7. MOBILE OPTIMIZATION --- */
 @media screen and (max-width: 768px) {
+    /* Mặc định ẩn menu trên mobile  */
     .nav-links { 
-        flex-direction: column; 
-        display: none; 
+        display: none !important; 
+        flex-direction: column;
         background: #6f4e37;
         width: 100%;
+        position: absolute;
+        top: 100%; /* Đẩy xuống dưới thanh top-bar */
+        left: 0;
+        z-index: 999;
     }
-    .nav-links.active { display: flex; }
-    .nav-links li a { border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .mobile-only { display: block !important; cursor: pointer; padding: 15px; color: #fff; font-weight: 900; }
-    .full-banner { max-height: 350px; }
-}
 
-@keyframes scroll-left { 
-    0% { transform: translateX(0); } 
-    100% { transform: translateX(-50%); } 
+    /* Khi có class .active thì hiện ra  */
+    .nav-links.active { 
+        display: flex !important; 
+    }
 }
