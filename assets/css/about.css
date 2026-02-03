@@ -1,0 +1,84 @@
+/* RESET LỖI MENU CHỮ ĐEN Ở GÓC TRÁI */
+#menu { display: none; }
+body.is-menu-visible #menu { display: block; }
+
+/* KHUNG CHỨA NỘI DUNG CHÍNH */
+.about-container {
+    padding: 60px 0 !important;
+    background-color: #ffffff;
+}
+
+.about-container .inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* TIÊU ĐỀ TRANG: KHÔNG DÙNG ABSOLUTE ĐỂ TRÁNH CHỒNG LẤP */
+.intro-section {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.intro-section h1 {
+    font-size: 4.5rem !important; /* Phông chữ siêu to */
+    font-weight: 900;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.6rem !important;
+    color: #d32f2f;
+    font-weight: 300;
+}
+
+/* CÁC ĐOẠN VĂN BẢN */
+.about-container p {
+    font-size: 1.3rem !important; /* Chữ to rõ ràng */
+    line-height: 1.9;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.red-title {
+    color: #d32f2f !important;
+    font-size: 1.8rem !important;
+    font-weight: 900;
+    margin: 40px 0 20px 0;
+    border-left: 6px solid #d32f2f;
+    padding-left: 15px;
+}
+
+/* KHỐI KINH NGHIỆM (EXPERIENCE BOX) */
+.experience-box {
+    background: #fdfdfd;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    margin: 50px 0;
+}
+
+.work-item {
+    margin-bottom: 30px;
+    padding-left: 20px;
+    border-left: 1px dashed #ccc;
+}
+
+.work-item h3 {
+    font-size: 1.5rem !important;
+    color: #333;
+    margin: 10px 0;
+}
+
+.badge {
+    display: inline-block;
+    background: #d32f2f;
+    color: #fff;
+    padding: 4px 15px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+}

@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+
+/* --- CẤU HÌNH CƠ BẢN --- */
+body, input, select, textarea {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px; /* Phông to rõ nét cho khách hàng tại Phú Thiện */
+    line-height: 1.6;
+    background: #fdfcf0 !important; /* Màu kem giấy cho phong cách cà phê [cite: 2026-02-03] */
+    color: #4e342e;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+}
+
+/* --- HEADER & NAVIGATION --- */
+.top-bar { background: #fff; border-bottom: 1px solid #eee; padding: 10px 0; }
+.top-bar .inner { display: flex; justify-content: space-between; align-items: center; }
+
+#horizontal-nav { 
+    background: #d32f2f !important; /* Màu đỏ nhận diện shop AI [cite: 2026-02-02] */
+    padding: 0; 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+/* Theme cà phê sẽ ghi đè màu đỏ này [cite: 2026-02-03] */
+.coffee-theme #horizontal-nav { background: #6f4e37 !important; } 
+
+#horizontal-nav ul { display: flex; list-style: none; margin: 0; padding: 0; justify-content: center; }
+#horizontal-nav ul li a { color: #fff !important; padding: 15px 20px; display: block; font-weight: 700; text-decoration: none; }
+#horizontal-nav ul li a:hover { background: rgba(0,0,0,0.2); }
+
+/* --- BANNER ĐẦY ĐỦ KÍCH THƯỚC [cite: 2026-02-03] --- */
+.banner-wrapper { width: 100%; overflow: hidden; background: #000; }
+.banner-container { width: 100%; max-width: 1920px; margin: 0 auto; }
+.full-banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain; /* Giữ nguyên tỷ lệ ảnh Tín thiết kế [cite: 2026-02-03] */
+}
+
+/* --- KHỐI DỊCH VỤ & TIN CẬY --- */
+.trust-container { background: #fff; padding: 40px 0; border-bottom: 1px solid #eee; }
+.trust-container .inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.trust-item { text-align: center; border-right: 1px solid #eee; padding: 10px; }
+.trust-item:last-child { border: none; }
+.trust-item i { font-size: 2.5em; color: #d32f2f; margin-bottom: 15px; }
+.coffee-theme .trust-item i { color: #6f4e37; }
+
+/* --- MARQUEE & SẢN PHẨM --- */
+.marquee-container { width: 100%; overflow: hidden; padding: 20px 0; position: relative; }
+.marquee-content { display: flex; width: max-content; animation: scroll-left 30s linear infinite; }
+.marquee-container:hover .marquee-content { animation-play-state: paused; }
+
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.p-card { 
+    width: 280px; margin-right: 30px; flex-shrink: 0; background: #fff; 
+    border-radius: 15px; padding: 20px; text-align: center; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee; 
+}
+.p-card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+.p-price { color: #d32f2f; font-weight: 900; font-size: 1.2em; }
+.coffee-theme .p-price { color: #6f4e37; }
+
+/* --- HIỆU ỨNG NEON TECH [cite: 2026-02-02] --- */
+.neon-header {
+    background: #0d1117; padding: 30px; border-radius: 15px; text-align: center;
+    margin-bottom: 40px; border: 2px solid #00e5ff;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+}
+.neon-header h2 { color: #fff !important; text-shadow: 0 0 10px #00e5ff; }
+.verified-badge { 
+    display: inline-flex; align-items: center; background: rgba(0, 229, 255, 0.1); 
+    padding: 8px 25px; border-radius: 50px; color: #fff;
+}
+.verified-badge i { color: #00ff95; margin-right: 10px; animation: pulse-neon 2s infinite; }
+
+/* --- NÚT BẤM CHUYÊN NGHIỆP --- */
+.button.primary.small {
+    display: inline-block !important; padding: 12px 30px !important;
+    background-color: #d32f2f !important; color: #fff !important;
+    border-radius: 8px; font-weight: 900; transition: all 0.3s ease;
+}
+.coffee-theme .button.primary.small { background-color: #6f4e37 !important; }
+.button.primary.small:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+/* --- MODAL THANH TOÁN & NÚT X MOBILE [cite: 2026-02-02, 2026-02-03] --- */
+.modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); z-index: 9999; backdrop-filter: blur(8px);
+}
+.modal-content {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: #fff; padding: 40px; border-radius: 20px; text-align: center;
+    max-width: 450px; width: 90%; border-top: 5px solid #d32f2f;
+}
+.coffee-theme .modal-content { border-top-color: #6f4e37; }
+
+.close-modal {
+    position: absolute; top: 10px; right: 20px; font-size: 40px;
+    color: #d32f2f; cursor: pointer; font-weight: bold;
+}
+
+/* --- TỐI ƯU MOBILE --- */
+@media screen and (max-width: 768px) {
+    #horizontal-nav { display: none; }
+    #horizontal-nav.active { display: block; }
+    #horizontal-nav ul { flex-direction: column; }
+    .mobile-only { display: block !important; cursor: pointer; font-weight: 900; color: #d32f2f; }
+    .coffee-theme .mobile-only { color: #6f4e37; }
+
+    .trust-container .inner { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .trust-item { border-right: none; border-bottom: 1px solid #eee; }
+    
+    .modal-overlay { align-items: flex-start; padding-top: 20px; overflow-y: auto; }
+    .modal-content { top: 20px; transform: translateX(-50%); }
+    .close-modal { font-size: 50px; top: 0; right: 10px; } /* Nút X cực to dễ bấm [cite: 2026-02-02] */
+}
+
+@keyframes pulse-neon {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); text-shadow: 0 0 20px #00ff95; }
+    100% { transform: scale(1); }
+}
