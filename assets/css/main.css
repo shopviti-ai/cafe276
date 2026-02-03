@@ -1,59 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 
-/* --- CẤU HÌNH CƠ BẢN --- */
-body, input, select, textarea {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 18px; /* Phông to rõ nét cho khách hàng tại Phú Thiện */
-    line-height: 1.6;
-    background: #fdfcf0 !important; /* Màu kem giấy cho phong cách cà phê [cite: 2026-02-03] */
-    color: #4e342e;
-}
+/* CẤU HÌNH CHUNG */
+body { font-family: 'Inter', sans-serif !important; background: #fdfcf0; color: #4e342e; margin: 0; font-size: 18px; }
+.inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    letter-spacing: -0.02em;
-}
+/* HEADER */
+#horizontal-nav { background: #6f4e37 !important; position: sticky; top: 0; z-index: 1000; }
+#horizontal-nav ul { display: flex; list-style: none; justify-content: center; margin: 0; padding: 0; }
+#horizontal-nav ul li a { color: #fff; padding: 15px 20px; display: block; font-weight: 700; text-decoration: none; }
 
-/* --- HEADER & NAVIGATION --- */
-.top-bar { background: #fff; border-bottom: 1px solid #eee; padding: 10px 0; }
-.top-bar .inner { display: flex; justify-content: space-between; align-items: center; }
-
-#horizontal-nav { 
-    background: #d32f2f !important; /* Màu đỏ nhận diện shop AI [cite: 2026-02-02] */
-    padding: 0; 
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-/* Theme cà phê sẽ ghi đè màu đỏ này [cite: 2026-02-03] */
-.coffee-theme #horizontal-nav { background: #6f4e37 !important; } 
-
-#horizontal-nav ul { display: flex; list-style: none; margin: 0; padding: 0; justify-content: center; }
-#horizontal-nav ul li a { color: #fff !important; padding: 15px 20px; display: block; font-weight: 700; text-decoration: none; }
-#horizontal-nav ul li a:hover { background: rgba(0,0,0,0.2); }
-
-/* --- BANNER ĐẦY ĐỦ KÍCH THƯỚC [cite: 2026-02-03] --- */
-.banner-wrapper { width: 100%; overflow: hidden; background: #000; }
+/* BANNER ĐẦY ĐỦ [cite: 2026-02-03] */
+.banner-wrapper { width: 100%; background: #000; overflow: hidden; }
 .banner-container { width: 100%; max-width: 1920px; margin: 0 auto; }
-.full-banner {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain; /* Giữ nguyên tỷ lệ ảnh Tín thiết kế [cite: 2026-02-03] */
-}
+.full-banner { width: 100%; height: auto; display: block; object-fit: contain; }
 
-/* --- KHỐI DỊCH VỤ & TIN CẬY --- */
+/* DỊCH VỤ */
 .trust-container { background: #fff; padding: 40px 0; border-bottom: 1px solid #eee; }
 .trust-container .inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.trust-item { text-align: center; border-right: 1px solid #eee; padding: 10px; }
-.trust-item:last-child { border: none; }
-.trust-item i { font-size: 2.5em; color: #d32f2f; margin-bottom: 15px; }
-.coffee-theme .trust-item i { color: #6f4e37; }
+.trust-item { text-align: center; }
+.trust-item i { font-size: 2.5em; color: #6f4e37; margin-bottom: 10px; }
 
-/* --- MARQUEE & SẢN PHẨM --- */
-.marquee-container { width: 100%; overflow: hidden; padding: 20px 0; position: relative; }
-.marquee-content { display: flex; width: max-content; animation: scroll-left 30s linear infinite; }
+/* --- QUAN TRỌNG: ÉP CHẠY NGANG (MARQUEE) [cite: 2026-02-03] --- */
+.marquee-container { width: 100%; overflow: hidden; padding: 30px 0; }
+.marquee-content { 
+    display: flex !important; 
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important; 
+    width: max-content; 
+    animation: scroll-left 40s linear infinite; 
+}
 .marquee-container:hover .marquee-content { animation-play-state: paused; }
 
 @keyframes scroll-left {
@@ -62,71 +37,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .p-card { 
-    width: 280px; margin-right: 30px; flex-shrink: 0; background: #fff; 
-    border-radius: 15px; padding: 20px; text-align: center; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee; 
+    width: 280px; margin-right: 25px; flex-shrink: 0; background: #fff; 
+    border-radius: 15px; padding: 20px; text-align: center; border: 1px solid #eee; 
 }
-.p-card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
-.p-price { color: #d32f2f; font-weight: 900; font-size: 1.2em; }
-.coffee-theme .p-price { color: #6f4e37; }
+.p-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; }
+.p-price { color: #6f4e37; font-weight: 900; margin: 10px 0; }
 
-/* --- HIỆU ỨNG NEON TECH [cite: 2026-02-02] --- */
-.neon-header {
-    background: #0d1117; padding: 30px; border-radius: 15px; text-align: center;
-    margin-bottom: 40px; border: 2px solid #00e5ff;
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+/* MODAL & NÚT X [cite: 2026-02-02] */
+.modal-overlay { 
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.85); z-index: 10000; backdrop-filter: blur(5px); 
 }
-.neon-header h2 { color: #fff !important; text-shadow: 0 0 10px #00e5ff; }
-.verified-badge { 
-    display: inline-flex; align-items: center; background: rgba(0, 229, 255, 0.1); 
-    padding: 8px 25px; border-radius: 50px; color: #fff;
+.modal-content { 
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+    background: #fff; padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; text-align: center; 
 }
-.verified-badge i { color: #00ff95; margin-right: 10px; animation: pulse-neon 2s infinite; }
+.close-modal { position: absolute; top: 5px; right: 15px; font-size: 45px; color: #6f4e37; cursor: pointer; }
 
-/* --- NÚT BẤM CHUYÊN NGHIỆP --- */
-.button.primary.small {
-    display: inline-block !important; padding: 12px 30px !important;
-    background-color: #d32f2f !important; color: #fff !important;
-    border-radius: 8px; font-weight: 900; transition: all 0.3s ease;
-}
-.coffee-theme .button.primary.small { background-color: #6f4e37 !important; }
-.button.primary.small:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-
-/* --- MODAL THANH TOÁN & NÚT X MOBILE [cite: 2026-02-02, 2026-02-03] --- */
-.modal-overlay {
-    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9); z-index: 9999; backdrop-filter: blur(8px);
-}
-.modal-content {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    background: #fff; padding: 40px; border-radius: 20px; text-align: center;
-    max-width: 450px; width: 90%; border-top: 5px solid #d32f2f;
-}
-.coffee-theme .modal-content { border-top-color: #6f4e37; }
-
-.close-modal {
-    position: absolute; top: 10px; right: 20px; font-size: 40px;
-    color: #d32f2f; cursor: pointer; font-weight: bold;
-}
-
-/* --- TỐI ƯU MOBILE --- */
+/* MOBILE */
 @media screen and (max-width: 768px) {
+    .trust-container .inner { grid-template-columns: repeat(2, 1fr); }
     #horizontal-nav { display: none; }
     #horizontal-nav.active { display: block; }
-    #horizontal-nav ul { flex-direction: column; }
-    .mobile-only { display: block !important; cursor: pointer; font-weight: 900; color: #d32f2f; }
-    .coffee-theme .mobile-only { color: #6f4e37; }
-
-    .trust-container .inner { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .trust-item { border-right: none; border-bottom: 1px solid #eee; }
-    
+    .mobile-only { display: block !important; color: #6f4e37; font-weight: 900; }
     .modal-overlay { align-items: flex-start; padding-top: 20px; overflow-y: auto; }
     .modal-content { top: 20px; transform: translateX(-50%); }
-    .close-modal { font-size: 50px; top: 0; right: 10px; } /* Nút X cực to dễ bấm [cite: 2026-02-02] */
-}
-
-@keyframes pulse-neon {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); text-shadow: 0 0 20px #00ff95; }
-    100% { transform: scale(1); }
 }
